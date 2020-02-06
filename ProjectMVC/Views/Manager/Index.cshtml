@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ProjectMVC.Models.Manager>
+
+@{
+    ViewBag.Title = "Index";
+    var num = Model.Count();
+}
+
+<h2>@num</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastName)
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ManagerID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.firstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lastName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ManagerID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ManagerID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ManagerID })
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <p>No managers to show.</p>
+    }
+
+</table>
